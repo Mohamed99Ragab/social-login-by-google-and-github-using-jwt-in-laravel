@@ -57,15 +57,25 @@
                                     {{ __('Login') }}
                                 </button>
                                 <br>
-                                <a href="{{route('github.auth.redirect')}}"class="btn btn-secondary">Sign Up By GitHub</a>
-                                @if (Route::has('password.request'))
+
+                            @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
                             </div>
                         </div>
+
                     </form>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="{{route('github.auth.redirect')}}"class="btn btn-secondary">Sign Up By GitHub</a>
+                        </div>
+                        <div class="col-4">
+                            <a href="{{route('google.auth.redirect')}}"class="btn btn-primary">Sign Up By Google</a>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

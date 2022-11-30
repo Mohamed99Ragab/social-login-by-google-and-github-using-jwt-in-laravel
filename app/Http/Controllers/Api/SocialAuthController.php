@@ -45,10 +45,10 @@ class SocialAuthController extends Controller
         $user = Socialite::driver($this->provider)->stateless()->userFromToken($this->access_token);
 //        dd($user);
         // find or create an authenticated user
-        if (!$authenticatedUser = User::where('provider_id', $user->id)->first()) {
+        if (!$authenticatedUser = User::where('email', $user->email)->first()) {
             $authenticatedUser = User::create([
                 'email' => $user->email,
-                'name' => $user->nickname,
+                'name' => $this->provider=='google'?$user->name : $user->nickname,
                 'avatar'=>$user->avatar,
                 'password'=>null,
                 'provider' => $this->provider,
@@ -62,6 +62,7 @@ class SocialAuthController extends Controller
         // respond with the access token
         return $this->respondWithToken($this->token,$authenticatedUser);
     }
+
 
     public function respondWithToken($token,$user)
     {

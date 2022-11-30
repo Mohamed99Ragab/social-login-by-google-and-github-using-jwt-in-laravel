@@ -37,7 +37,11 @@ Route::get('/home', [HomeController::class, 'index'])->middleware('auth:web')->n
 
 
 Route::get('/auth/redirect', [LoginController::class,'github_redirect'])->name('github.auth.redirect');
-
 Route::get('/auth/callback', [LoginController::class,'github_callback'])->name('github.auth.callback');
+
+
+
+Route::get('/auth/google/redirect', [LoginController::class,'google_redirect'])->name('google.auth.redirect');
+Route::get('/auth/google/callback', [LoginController::class,'google_callback'])->name('google.auth.callback');
 
 

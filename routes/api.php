@@ -41,5 +41,8 @@ Route::group(['prefix'=>'auth'],function (){
 
 Route::post('/login/callback', [SocialAuthController::class,'token']);
 
+Route::post('/login/google/callback', [SocialAuthController::class,'google']);
+
+
 
 
